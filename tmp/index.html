@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="menubar">
+    <div class="title">
+      MacroFireball
+    </div>
+    <div class="menu">
+      <i class="fa fa-heart"></i> Donate
+    </div>
+  </div>
+  <div class="content">
+    <div class="logo"></div>
+    <form method="POST" action="#">
+      <input type="text" name="spell-name" class="name-input" placeholder="Input text here...">
+      <span class="fa fa-search search"></span>
+    </form>
+    <textarea class="macro-display">&{template:DnD35StdRoll} {{spellflag=true}} {{name= @{character_name} casts Doom on @{target|token_name} }} {{School:=Necromancy (Fear, Mind affecting)}} {{Level: =Cleric 1}} {{Cmpnts:=V, S, DF}} {{Casting Time:= 1 std action}} {{Range:= Medium ([[100+10*@{casterlevel}]]ft)}} {{Target:= 1 living creature}} {{Duration:= [[@{casterlevel}]] min.}} {{Saving Throw:= Will negates (DC=[[@{spelldc1}]]) }} {{Spell Resist.:= Yes }} {{Caster level check: = [[1d20+@{casterlevel}+@{spellpen}]] vs spell resistance.}} {{compcheck= Conc:[[{1d20 +[[@{concentration}]] }>?{Concentration DC=15+Spell Level or 10+Damage Received|16}]] }} {{succeedcheck=Success! She casts her spell!}} {{failcheck=She fails :( }} {{notes=Target is filled with a feeling of horrible dread that causes it to become shaken (-2 on attack rolls, saves, skill checks, ability checks).}} 
+    </textarea>
+    </textarea>
+  </div>
+  <footer>
+    <div class="copyright">
+      © 2016 Bendippa. All rights reserved. 
+    </div>
+    <div class="legalese">
+      Terms of Use | Cookie Policy | About
+    </div>
+  </footer>
+</body>
+
+</html>
