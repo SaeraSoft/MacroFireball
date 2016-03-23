@@ -4,13 +4,37 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/bootstrap/css/style.css')
+    link(rel='stylesheet', href='/bootstrap/css/styles.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/bootstrap/css/responsive.css')
-    link(rel='stylesheet', href='/bootstrap/css/animate.css')
-    link(rel='stylesheet', href='/bootstrap/style.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css') 
+    
+    link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Source+Code+Pro:500', rel='stylesheet', type='text/css')
     
     script(src='/bootstrap/js/jquery.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')
   body
-    block content
+    #wrap
+      .navbar.navbar-default.navbar-fixed-top
+        .container
+          .navbar-header
+            a.navbar-brand(href='/') MacroFireball
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          #navbar-main.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                a(href='/about') About
+
+      .container
+        block content
+
+    #footer
+      .container
+        p.text-muted.credit
+          | SaeraSoft 2016
+            
+
+

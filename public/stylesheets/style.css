@@ -1,8 +1,31 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif!important;
 }
 
-a {
-  color: #00B7FF;
+.header {
+    text-align: center;
+}
+
+.macro-display {
+    resize: vertical;
+    min-height: 300px;
+    margin-bottom: 40px;
+    
+    font-family: "Source Code Pro", monospace!important;
+}
+
+.name-input {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.logo {
+    background-image: url("../images/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    width: 128px;
+    height: 128px;
+    
+    margin: 0 auto;
 }
