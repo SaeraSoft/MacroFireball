@@ -3,13 +3,13 @@ extends layout
 block content
   .row
     .col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2.header
-      h1 #{title}
-      h4 A simple spell macro generator for roll20.net
+      h1 #{pageHeader.title}
+      h4 #{pageHeader.strapline}
   .row
     .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3
       form(method='POST', action='#')
-        input.name-input.form-control(type='text', name='spell-name', placeholder='Input text here...')
+        input.name-input.form-control(type='text', name='spell-name', placeholder='Search for a spell...')
   .row
     .col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
-      textarea.macro-display.form-control
-        | &{template:DnD35StdRoll} {{spellflag=true}} {{name= @{character_name} casts Doom on @{target|token_name} }} {{School:=Necromancy (Fear, Mind affecting)}} {{Level: =Cleric 1}} {{Cmpnts:=V, S, DF}} {{Casting Time:= 1 std action}} {{Range:= Medium ([[100+10*@{casterlevel}]]ft)}} {{Target:= 1 living creature}} {{Duration:= [[@{casterlevel}]] min.}} {{Saving Throw:= Will negates (DC=[[@{spelldc1}]]) }} {{Spell Resist.:= Yes }} {{Caster level check: = [[1d20+@{casterlevel}+@{spellpen}]] vs spell resistance.}} {{compcheck= Conc:[[{1d20 +[[@{concentration}]] }>?{Concentration DC=15+Spell Level or 10+Damage Received|16}]] }} {{succeedcheck=Success! She casts her spell!}} {{failcheck=She fails :( }} {{notes=Target is filled with a feeling of horrible dread that causes it to become shaken (-2 on attack rolls, saves, skill checks, ability checks).}} 
+      textarea.macro-display.form-control(readonly="true", autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false")
+        | #{macro}
