@@ -26,7 +26,8 @@ var spellSchema = new mongoose.Schema({
     target: String,
     true_name_component: {type: Boolean, "default": false},
     verbal_component: {type: Boolean, "default": false},
-    xp_component: {type: Boolean, "default": false}
+    xp_component: {type: Boolean, "default": false},
+    edition: String
 });
 
 mongoose.model('Spells', spellSchema);
