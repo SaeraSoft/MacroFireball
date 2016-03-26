@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='fireballApp')
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
@@ -20,6 +20,7 @@ html
         .container
           .navbar-header
             a.navbar-brand(href='/') MacroFireball
+                sup  #{pageHeader.status}
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
               span.icon-bar
               span.icon-bar
