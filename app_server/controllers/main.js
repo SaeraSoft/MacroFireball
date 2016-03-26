@@ -17,9 +17,14 @@ var _showError = function(req, res, status) {
         content = "Something, somewhere, has gone just a little bit wrong.";
     }
     res.status(status);
-    res.render('generic', {
-        title: title,
-        content: content
+    res.render('index', {
+        title: 'MacroFireball - a simple spell macro generator',
+        pageHeader: {
+            title: "MacroFireball",
+            status: "ALPHA",
+            strapline: "A simple spell macro generator for roll20.net"
+        },
+        response: status
     });
 };
 
