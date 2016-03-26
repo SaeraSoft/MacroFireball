@@ -11,16 +11,17 @@ block content
         input.name-input.form-control(type='text', name='name', placeholder='Search for a spell...')
   .row
     .col-xs-10.col-xs-offset-1.col-sm-10.col-sm-offset-1
-      ul.nav.nav-tabs
-        each spell, index in response
-          if index === 0
-            li.active
-              a(data-toggle='tab', href='#' + spell._id) #{spell.rulebook_name}
-          else
-            li(class=)
-              a(data-toggle='tab', href='#' + spell._id) #{spell.rulebook_name}
-      .tab-content
-        each spell in response
-          div(id=spell._id).tab-pane.fade.in.active
-            textarea.macro-display.form-control(readonly="true", autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false") 
-              | #{spell._id}
+      if response
+        ul.nav.nav-tabs
+          each spell, index in response
+            if index === 0
+              li.active
+                a(data-toggle='tab', href='#' + spell._id) #{spell.rulebook_name}
+            else
+              li(class=)
+                a(data-toggle='tab', href='#' + spell._id) #{spell.rulebook_name}
+        .tab-content
+          each spell in response
+            div(id=spell._id).tab-pane.fade.in.active
+              textarea.macro-display.form-control(readonly="true", autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false") 
+                | #{spell._id}
