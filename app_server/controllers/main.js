@@ -24,27 +24,6 @@ var _showError = function(req, res, status) {
 };
 
 var renderHomepage = function(req, res, spell) {
-    if (spell.length === 1) {
-        console.log(spell);
-        path = "/api/spells/" + spell["0"]._id;
-        options = {
-            url: apiOptions.server + path,
-            method: "GET",
-            json: {}
-        };
-        request(
-            options,
-            function(err, response, body) {
-                if (response.statusCode === 200) {
-                    var data = body;
-                    renderHomepage(req, res, data);
-                } else {
-                    _showError(req, res, response.statusCode);
-                }
-            }
-        );
-        return;
-    }
     res.render('index', {
         title: 'MacroFireball - a simple spell macro generator',
         pageHeader: {
@@ -52,7 +31,7 @@ var renderHomepage = function(req, res, spell) {
             status: "ALPHA",
             strapline: "A simple spell macro generator for roll20.net"
         },
-        macro: JSON.stringify(spell)
+        response: spell
     });
 }
 
