@@ -7,8 +7,8 @@ block content
       h4 #{pageHeader.strapline}
   .row
     .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3
-      form(method='POST', action='#')
-        input.name-input.form-control(type='text', name='spell-name', placeholder='Search for a spell...')
+      form(method='GET', action='', role='form')
+        input.name-input.form-control(type='text', name='name', placeholder='Search for a spell...')
   .row
     .col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
       textarea.macro-display.form-control(readonly="true", autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false")

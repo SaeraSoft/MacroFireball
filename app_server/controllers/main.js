@@ -1,16 +1,68 @@
-/* GET home page */
-module.exports.index = function(req, res){
-  res.render('index', {
-      title: 'MacroFireball - a simple spell macro generator',
-      pageHeader: {
-          title: "MacroFireball",
-          strapline: "A simple spell macro generator for roll20.net"
-      },
-      macro: "&{template:DnD35StdRoll} {{spellflag=true}} {{name= @{character_name} casts Doom on @{target|token_name} }} {{School:=Necromancy (Fear, Mind affecting)}} {{Level: =Cleric 1}} {{Cmpnts:=V, S, DF}} {{Casting Time:= 1 std action}} {{Range:= Medium ([[100+10*@{casterlevel}]]ft)}} {{Target:= 1 living creature}} {{Duration:= [[@{casterlevel}]] min.}} {{Saving Throw:= Will negates (DC=[[@{spelldc1}]]) }} {{Spell Resist.:= Yes }} {{Caster level check: = [[1d20+@{casterlevel}+@{spellpen}]] vs spell resistance.}} {{compcheck= Conc:[[{1d20 +[[@{concentration}]] }>?{Concentration DC=15+Spell Level or 10+Damage Received|16}]] }} {{succeedcheck=Success! She casts her spell!}} {{failcheck=She fails :( }} {{notes=Target is filled with a feeling of horrible dread that causes it to become shaken (-2 on attack rolls, saves, skill checks, ability checks).}}"
+var request = require('request');
+
+var apiOptions = {
+    server: "http://localhost:3000"
+};
+if (process.env.NODE_ENV === 'production') {
+    apiOptions.server = "http://loveinouter.space:3000";
+}
+
+var _showError = function(req, res, status) {
+    var title, content;
+    if (status === 404) {
+        title = "404, page not found";
+        content = "Oh dear. Looks like we can't find this page. Sorry.";
+    } else {
+        title = status + ", something's gone wrong";
+        content = "Something, somewhere, has gone just a little bit wrong.";
+    }
+    res.status(status);
+    res.render('generic', {
+        title: title,
+        content: content
     });
 };
 
+var renderHomepage = function(req, res, spell) {
+    res.render('index', {
+        title: 'MacroFireball - a simple spell macro generator',
+        pageHeader: {
+            title: "MacroFireball",
+            strapline: "A simple spell macro generator for roll20.net"
+        },
+        macro: JSON.stringify(spell)
+    });
+}
+
+/* GET home page */
+module.exports.index = function(req, res) {
+    var options, path;
+    if (req.query['name'] === undefined) {
+        renderHomepage(req, res, "");
+        return;
+    }
+    path = "/api/spells/list/" + req.query['name'];// + "56f5a4e79d853e736c90ecdf";//TODO:req.params.spellid;
+    options = {
+        url: apiOptions.server + path,
+        method: "GET",
+        json: {}
+    };
+    request(
+        options,
+        function(err, response, body) {
+            if (response.statusCode === 200) {
+                var data = body;
+                renderHomepage(req, res, data);
+            } else {
+                _showError(req, res, response.statusCode);
+            }
+        }
+    );
+};
+
 /* About page */
-module.exports.about = function(req, res){
-  res.render('generic', { title: 'About' });
+module.exports.about = function(req, res) {
+    res.render('generic', {
+        title: 'About',
+        content: "About this project"});
 };
