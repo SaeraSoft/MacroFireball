@@ -31,7 +31,7 @@ var renderHomepage = function(req, res, spell) {
             strapline: "A simple spell macro generator for roll20.net"
         },
         response: spell
-    });
+        });
 }
 
 /* GET home page */
