@@ -23,10 +23,12 @@ block content
         .tab-content
           each spell, index in response
             if index === 0
-              div(id=spell._id).tab-pane.fade.in.active
-                textarea.macro-display.form-control(readonly="true", autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false") !{JSON.stringify(spell, null, 2)}
+              div(id=spell._id).tab-pane.fade.in.active.macro-display.form-control.contenteditable
+                script.
+                  printMacro(!{JSON.stringify(spell)});
             else
-              div(id=spell._id).tab-pane.fade.in
-                textarea.macro-display.form-control(readonly="true", autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false") !{JSON.stringify(spell, null, 2)}
+              div(id=spell._id).tab-pane.fade.in.macro-display.form-control.contenteditable
+                script.
+                  printMacro(!{JSON.stringify(spell)});
       else
-        
+      

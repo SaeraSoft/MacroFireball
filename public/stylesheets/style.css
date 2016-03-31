@@ -6,17 +6,20 @@ body {
     text-align: center;
 }
 
-.macro-display:read-only {
+.macro-display {
     resize: vertical;
     min-height: 300px;
     margin-bottom: 40px;
     
     background-color: white!important;
-    border-top: none;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-top: none!important;
+    border-top-left-radius: 0px!important;
+    border-top-right-radius: 0px!important;
     
     font-family: "Source Code Pro", monospace!important;
+    
+    display: block;
+    overflow: auto;
 }
 
 .name-input {
