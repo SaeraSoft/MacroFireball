@@ -10,8 +10,9 @@ block content
       form(method='GET', action='', role='form')
         input.name-input.form-control(type='text', name='name', placeholder='Search for a spell...')
   .row
-    .col-xs-10.col-xs-offset-1.col-sm-10.col-sm-offset-1
+    .col-xs-10.col-xs-offset-1.col-sm-10.col-sm-offset-1.centered
       if response
+        h3 #{response[0].name}
         ul.nav.nav-tabs
           each spell, index in response
             if index === 0
