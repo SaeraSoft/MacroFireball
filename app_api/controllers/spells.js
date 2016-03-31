@@ -33,7 +33,7 @@ module.exports.spellGetOne = function(req, res) {
 module.exports.spellsListByName = function(req, res) {
     if (req.params && req.params.spellname) {
         Spll
-            .find({ name: req.params.spellname })
+            .find({'name': {$regex: new RegExp('^' + req.params.spellname, 'i')}})
             .exec(function(err, spell) {
                 if (!spell || spell.length === 0) {
                     sendJsonResponse(res, 404, {
